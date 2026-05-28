@@ -5,8 +5,16 @@
 % Assuming using "article" document class and letter sized paper.
 % FONT STUFF
 
-\RequirePackage[T1]{fontenc} %  Font encoding https://texfaq.org/FAQ-why-inp-font
-\RequirePackage[default,semibold]{sourcesanspro}
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc} %  Font encoding https://texfaq.org/FAQ-why-inp-font
+  \RequirePackage[default,semibold]{sourcesanspro}
+\else
+  \RequirePackage{fontspec}
+  \IfFontExistsTF{Source Sans Pro}
+    {\setmainfont{Source Sans Pro}}
+    {\setmainfont{Arial}}
+\fi
 \RequirePackage[10pt]{moresize}
 \usepackage{anyfontsize}
 \RequirePackage{csquotes}
@@ -65,5 +73,7 @@
 \RequirePackage{standalone}
 
 % FOR TEMPLATE FILLER
-\RequirePackage[english]{babel}
+\ifPDFTeX
+  \RequirePackage[english]{babel}
+\fi
 \RequirePackage{blindtext}% Filler Text

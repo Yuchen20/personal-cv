@@ -11,5 +11,10 @@
 *.synctex.gz
 *.toc
 
+# Root-level generated PDFs; final deliverables live in output/
+resume.pdf
+resume-en.pdf
+resume-zh.pdf
+
 # Local preview output
 preview/
